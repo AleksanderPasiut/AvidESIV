@@ -1,0 +1,7 @@
+Modyfikowalne ustawienia:
+
+- kolor t³a
+- kolor interfejsu
+- typy wskaŸnika rotacji (ma³y, œredni, du¿y)
+- rodzaj interpolacji obrazka
+- czu³oœæ kó³ka myszy

@@ -1,0 +1,34 @@
+#include <Windows.h>
+
+#include "program\\program.h"
+
+PROGRAM* Program = 0;
+
+LRESULT CALLBACK EventProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	if (Program)
+		return Program->Message(hwnd, uMsg, wParam, lParam);
+	else return DefWindowProc(hwnd, uMsg, wParam, lParam);
+};
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR str, int nCmdShow)
+{
+	if (PROGRAM::PreOpen())
+		return 0;
+
+	try
+	{
+		Program = new PROGRAM(hInstance, EventProc);
+	}
+	catch(...) { return 0; }
+
+	MSG msg;
+	while(GetMessage(&msg, 0, 0, 0))
+	{
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+
+	delete Program;
+	return static_cast<int>(msg.wParam);
+}
