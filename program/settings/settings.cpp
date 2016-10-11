@@ -38,7 +38,7 @@ void SETTINGS::InitSavingPath()
 	for (unsigned i = size; i > 0; i--)
 		if (path[i] == L'\\')
 		{
-			memcpy(path+i, L"config.cfg", 10*sizeof(wchar_t));
+			memcpy(path+i, L"config.cfg", 11*sizeof(wchar_t));
 			break;
 		}
 }
