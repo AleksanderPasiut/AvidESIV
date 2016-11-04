@@ -13,7 +13,7 @@ void PICTURE::SetMarkerType(unsigned mode) noexcept
 		return;
 
 	pp.rotation_marker_type = mode;
-	rotation.ChangeMarkerType(mode);
+	pp.ChangeMarkerType(mode);
 }
 void PICTURE::SetColorBackground(D2D1_COLOR_F color) noexcept
 {

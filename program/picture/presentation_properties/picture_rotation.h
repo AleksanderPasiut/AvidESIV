@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Windows.h>
+#include "..\\..\\graphics\\graphics.h"
 
 class ROTATION
 {
@@ -18,15 +19,9 @@ class ROTATION
 	float strokes_outer_radius_90deg;
 	float strokes_outer_radius_15deg;
 
-	ROTATION() : 
-		active(false),
-		banned_circle_radius(30),
-		marker_circle_radius(8),
-		strokes_inner_radius(40),
-		strokes_outer_radius_90deg(70),
-		strokes_outer_radius_15deg(52) {}
+	ROTATION();
 
 	void ChangeMarkerType(unsigned new_type) noexcept;
 
-	friend class PICTURE;
+	friend class PRESENTATION_PROPERTIES;
 };

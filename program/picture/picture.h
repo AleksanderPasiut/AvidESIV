@@ -2,9 +2,7 @@
 
 #include "..\\graphics\\graphics.h"
 #include "loader\\loader.h"
-#include "presentation_properties.h"
-#include "picture_moving.h"
-#include "picture_rotation.h"
+#include "presentation_properties\\presentation_properties.h"
 
 class PICTURE
 {
@@ -14,19 +12,6 @@ class PICTURE
 	ID2D1SolidColorBrush* brush;
 
 	const wchar_t* PathToFirstPicture() const noexcept;
-	void ResetPosition() noexcept;
-	void Zooming(WPARAM, LPARAM) noexcept;
-
-	MOVING moving;
-	void MovingStart(WPARAM, LPARAM) noexcept;
-	void MovingPerform(WPARAM, LPARAM) noexcept;
-	void MovingEnd(WPARAM, LPARAM) noexcept;
-
-	ROTATION rotation;
-	void RotationStart(WPARAM, LPARAM) noexcept;
-	void RotationPerform(WPARAM, LPARAM) noexcept;
-	void RotationEnd(WPARAM, LPARAM) noexcept;
-	void RotationPaintMarker() const noexcept;
 
 	PICTURE(GRAPHICS*);
 	PICTURE(const PICTURE&) = delete;

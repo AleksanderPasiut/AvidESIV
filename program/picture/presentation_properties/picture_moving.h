@@ -11,5 +11,5 @@ class MOVING
 
 	MOVING() : active(false) {}
 
-	friend class PICTURE;
+	friend class PRESENTATION_PROPERTIES;
 };

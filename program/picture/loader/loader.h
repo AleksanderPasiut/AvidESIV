@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "..\\..\\graphics\\graphics.h"
-#include "..\\presentation_properties.h"
+#include "..\\presentation_properties\presentation_properties.h"
 #include "loader_file.h"
 
 #pragma comment(lib,"windowscodecs.lib")
