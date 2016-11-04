@@ -12,6 +12,7 @@ class MENU
 	BUTTON_SETTINGS button_settings;
 	BUTTON_PREVIOUS button_previous;
 	BUTTON_NEXT button_next;
+	BUTTON_INFO button_info;
 
 	void InitBrushes();
 

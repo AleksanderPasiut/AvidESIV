@@ -8,7 +8,8 @@ enum BUTTON_TYPE
 	BT_MINIMIZE = 1,
 	BT_SETTINGS = 2,
 	BT_PREVIOUS = 3,
-	BT_NEXT = 4
+	BT_NEXT = 4,
+	BT_INFO = 5,
 };
 enum BUTTON_STATE
 {
@@ -24,15 +25,19 @@ protected:
 	static ID2D1SolidColorBrush* brush_main;
 	static ID2D1SolidColorBrush* brush_shader_1;
 	static ID2D1SolidColorBrush* brush_shader_2;
+	static IDWriteTextFormat* font;
 
 	static float stroke_width;
 	static float top_margin;
+	static float bottom_margin;
 	static float right_margin;
 	static float sysmenu_size;
 	static float sysmenu_space;
 	static float side_margin;
 	static float np_vsize;
 	static float np_hsize;
+	static float i_vsize;
+	static float i_hsize;
 
 	BUTTON_TYPE type;
 	BUTTON_STATE state;
@@ -79,6 +84,13 @@ class BUTTON_PREVIOUS : BUTTON
 class BUTTON_NEXT : BUTTON
 {
 	BUTTON_NEXT();
+	void Paint() const noexcept;
+
+	friend class MENU;
+};
+class BUTTON_INFO : BUTTON
+{
+	BUTTON_INFO();
 	void Paint() const noexcept;
 
 	friend class MENU;

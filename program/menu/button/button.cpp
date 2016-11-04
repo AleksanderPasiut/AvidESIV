@@ -4,15 +4,19 @@ GRAPHICS* BUTTON::graphics = 0;
 ID2D1SolidColorBrush* BUTTON::brush_main = 0;
 ID2D1SolidColorBrush* BUTTON::brush_shader_1 = 0;
 ID2D1SolidColorBrush* BUTTON::brush_shader_2 = 0;
+IDWriteTextFormat* BUTTON::font = 0;
 
 float BUTTON::stroke_width = 1.5f;
 float BUTTON::top_margin = 10;
+float BUTTON::bottom_margin = 20;
 float BUTTON::right_margin = 10;
 float BUTTON::sysmenu_size = 25;
 float BUTTON::sysmenu_space = 35;
 float BUTTON::side_margin = 10;
 float BUTTON::np_vsize = 80;
 float BUTTON::np_hsize = 18;
+float BUTTON::i_vsize = 24;
+float BUTTON::i_hsize = 240;
 
 void BUTTON::SharedPainting() const noexcept
 {

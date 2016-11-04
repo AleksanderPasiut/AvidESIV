@@ -27,7 +27,9 @@ public:
 	void EndDraw() noexcept;
 	void Redraw() noexcept;
 	
+	IDWriteFactory* DWriteFactory() noexcept { return factory_dwrite; }
 	ID2D1HwndRenderTarget* Target() noexcept { return target; }
+	D2D1_COLOR_F ClearColor() noexcept { return clear_color; }
 
 	void SetClearColor(D2D1_COLOR_F color) noexcept { clear_color = color; }
 };

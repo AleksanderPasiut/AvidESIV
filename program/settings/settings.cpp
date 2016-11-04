@@ -75,9 +75,9 @@ void SETTINGS::RetrieveSet() noexcept
 }
 void SETTINGS::ApplySet() const noexcept
 {
-	menu->SetColorInterface(set.interface_color);
 	picture->SetColorInterface(set.interface_color);
 	picture->SetColorBackground(set.background_color);
+	menu->SetColorInterface(set.interface_color);
 	picture->SetZoomSpeed(set.mousewheel_sensitivity);
 	picture->SetMarkerType(set.rotation_marker_type);
 	picture->SetInterpolationMode(set.interpolation_type);
