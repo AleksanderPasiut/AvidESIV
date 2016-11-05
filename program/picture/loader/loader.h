@@ -7,6 +7,7 @@
 #include "..\\..\\graphics\\graphics.h"
 #include "..\\presentation_properties\presentation_properties.h"
 #include "loader_file.h"
+//#include "..\\show_info\\show_info.h"
 
 #pragma comment(lib,"windowscodecs.lib")
 
@@ -32,6 +33,10 @@ class LOADER
 	bool LoadNext(PRESENTATION_PROPERTIES*) noexcept;
 	bool LoadPrevious(PRESENTATION_PROPERTIES*) noexcept;
 	bool LoadExternal(const wchar_t* url) noexcept;
+
+	void RefreshButtonInfo() const noexcept;
+
+	//void FillShowInfoData(SHOW_INFO_DATA* sid) const noexcept;
 
 	friend class PICTURE;
 };

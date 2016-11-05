@@ -41,11 +41,14 @@ void MENU::InitBrushes()
 																   DWRITE_FONT_WEIGHT_NORMAL,
 																   DWRITE_FONT_STYLE_NORMAL,
 																   DWRITE_FONT_STRETCH_NORMAL,
-																   16.0f,
+																   13.0f,
 																   L"pl-pl",
 																   &BUTTON::font);
 				if (FAILED(hres))
 					throw 0;
+
+				BUTTON::font->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
+				BUTTON::font->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
 			}
 			catch(...) { BUTTON::brush_shader_2->Release(); throw; }
 		}

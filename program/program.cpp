@@ -32,6 +32,7 @@ PROGRAM::PROGRAM(HINSTANCE hInstance, WNDPROC wndproc)
 	}
 	catch(...) { throw; }
 
+	picture->FirstLoad();
 	ShowWindow(mainWindow->RetHwnd(), SW_SHOWNORMAL);
 }
 
@@ -58,6 +59,7 @@ LRESULT PROGRAM::Message(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) noe
 				case BT_SETTINGS: settings->Proceed(); break;
 				case BT_PREVIOUS: picture->Previous(); break;
 				case BT_NEXT: picture->Next(); break;
+				case BT_INFO: picture->ShowInfo(); break;
 			}
 			break;
 		}
@@ -88,6 +90,11 @@ LRESULT PROGRAM::Message(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) noe
 			if (picture->External(wParam))
 				ShowWindow(mainWindow->RetHwnd(), SW_RESTORE);
 
+			break;
+		}
+		case 0x8002:
+		{
+			menu->SetButtonInfoText(reinterpret_cast<wchar_t*>(lParam));
 			break;
 		}
 		case WM_CLOSE: PostQuitMessage(0); break;

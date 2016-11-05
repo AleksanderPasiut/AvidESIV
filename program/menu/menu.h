@@ -25,6 +25,7 @@ class MENU
 	bool Mouse(UINT uMsg, WPARAM wParam, LPARAM lParam) noexcept;
 
 	void SetColorInterface(D2D1_COLOR_F color) noexcept;
+	void SetButtonInfoText(wchar_t* text) noexcept { button_info.SetText(text); }
 
 	friend class SETTINGS;
 	friend class PROGRAM;

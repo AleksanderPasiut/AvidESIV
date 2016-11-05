@@ -37,8 +37,12 @@ LOADER::~LOADER() noexcept
 
 void LOADER::FirstLoad(const wchar_t* url) 
 {
+	if (!url)
+		return;
+
 	LoadAllFiles(url);
 	LoadCore(url);
+	RefreshButtonInfo();
 }
 bool LOADER::LoadNext(PRESENTATION_PROPERTIES* pp) noexcept
 {
@@ -76,6 +80,7 @@ bool LOADER::LoadNext(PRESENTATION_PROPERTIES* pp) noexcept
 			pp->shift_y = (*current)->shift_y;
 			pp->zoom = (*current)->zoom;
 			pp->UpdateMatrix();
+			RefreshButtonInfo();
 			break;
 		}
 		catch(...) {}
@@ -119,6 +124,7 @@ bool LOADER::LoadPrevious(PRESENTATION_PROPERTIES* pp) noexcept
 			pp->shift_y = (*current)->shift_y;
 			pp->zoom = (*current)->zoom;
 			pp->UpdateMatrix();
+			RefreshButtonInfo();
 			break;
 		}
 		catch(...) {}
@@ -136,6 +142,11 @@ bool LOADER::LoadExternal(const wchar_t* url) noexcept
 	tab.clear();
 
 	LoadAllFiles(url);
-
+	RefreshButtonInfo();
 	return true;
+}
+
+void LOADER::RefreshButtonInfo() const noexcept
+{
+	PostMessage(graphics->Target()->GetHwnd(), 0x8002, 0, reinterpret_cast<LPARAM>((*current)->name));
 }

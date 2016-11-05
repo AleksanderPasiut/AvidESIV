@@ -20,9 +20,11 @@ class PICTURE
 
 	void Paint() const noexcept;
 	bool Mouse(UINT uMsg, WPARAM wParam, LPARAM lParam) noexcept;
+	void FirstLoad() noexcept;
 	bool External(WPARAM wParam) noexcept;
 	void Previous() noexcept;
 	void Next() noexcept;
+	void ShowInfo() const noexcept;
 
 	unsigned RetInterpolationMode() const noexcept { return pp.interpolation_mode; }
 	unsigned RetMarkerType() const noexcept { return pp.rotation_marker_type; }

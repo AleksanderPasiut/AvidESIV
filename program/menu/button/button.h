@@ -90,7 +90,10 @@ class BUTTON_NEXT : BUTTON
 };
 class BUTTON_INFO : BUTTON
 {
+	wchar_t* text;
+
 	BUTTON_INFO();
+	void SetText(wchar_t* text) noexcept;
 	void Paint() const noexcept;
 
 	friend class MENU;

@@ -1,4 +1,5 @@
 #include "picture.h"
+#include "show_info\\show_info.h"
 
 const wchar_t* PICTURE::PathToFirstPicture() const noexcept
 {
@@ -13,7 +14,7 @@ const wchar_t* PICTURE::PathToFirstPicture() const noexcept
 	else return argv[1];
 }
 
-PICTURE::PICTURE(GRAPHICS* graphics) : graphics(graphics), pp(graphics)
+PICTURE::PICTURE(GRAPHICS* graphics) : graphics(graphics), pp(graphics), loader(0)
 {
 	HRESULT hres;
 	
@@ -27,16 +28,8 @@ PICTURE::PICTURE(GRAPHICS* graphics) : graphics(graphics), pp(graphics)
 	try
 	{
 		loader = new LOADER(graphics);
-
-		try
-		{
-			loader->FirstLoad(PathToFirstPicture());
-		}
-		catch(int) { MessageBoxW(graphics->Target()->GetHwnd(), L"B³¹d odczytu pliku lub niew³aœciwy format", L"B³¹d", MB_OK); }
-		catch(...) { delete loader; throw; }
 	}
-	catch(...) { brush->Release(); }
-	pp.ResetPosition(loader->rect);
+	catch(...) { brush->Release(); throw; }
 }
 PICTURE::~PICTURE() noexcept
 {
@@ -83,6 +76,15 @@ bool PICTURE::Mouse(UINT uMsg, WPARAM wParam, LPARAM lParam) noexcept
 	}
 	return true;
 }
+void PICTURE::FirstLoad() noexcept
+{
+	try
+	{
+		loader->FirstLoad(PathToFirstPicture());
+		pp.ResetPosition(loader->rect);
+	}
+	catch(int) { MessageBoxW(graphics->Target()->GetHwnd(), L"B³¹d odczytu pliku lub niew³aœciwy format", L"B³¹d", MB_OK); }
+}
 bool PICTURE::External(WPARAM wParam) noexcept
 {
 	bool ret = false;
@@ -121,4 +123,11 @@ void PICTURE::Next() noexcept
 {
 	if (!loader->LoadNext(&pp))
 		pp.ResetPosition(loader->rect);
+}
+void PICTURE::ShowInfo() const noexcept
+{
+	return; // functionality is cancelled for now
+	/*SHOW_INFO_DATA sid;
+	loader->FillShowInfoData(&sid);
+	DialogBoxParam(0, "dialog_show_info", graphics->Target()->GetHwnd(), reinterpret_cast<DLGPROC>(DialogShowWindowProc), reinterpret_cast<LPARAM>(&sid));*/
 }

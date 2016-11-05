@@ -8,15 +8,15 @@ IDWriteTextFormat* BUTTON::font = 0;
 
 float BUTTON::stroke_width = 1.5f;
 float BUTTON::top_margin = 10;
-float BUTTON::bottom_margin = 20;
+float BUTTON::bottom_margin = 15;
 float BUTTON::right_margin = 10;
 float BUTTON::sysmenu_size = 25;
 float BUTTON::sysmenu_space = 35;
 float BUTTON::side_margin = 10;
 float BUTTON::np_vsize = 80;
 float BUTTON::np_hsize = 18;
-float BUTTON::i_vsize = 24;
-float BUTTON::i_hsize = 240;
+float BUTTON::i_vsize = 20;
+float BUTTON::i_hsize = 400;
 
 void BUTTON::SharedPainting() const noexcept
 {

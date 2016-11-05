@@ -1,6 +1,6 @@
 #include "loader.h"
 
-wchar_t* PathToCatalog(const wchar_t* url)
+wchar_t* PathToCatalog(const wchar_t* url) noexcept
 {
 	int length = lstrlenW(url);
 	wchar_t* ret = new wchar_t [length+2];
@@ -16,7 +16,7 @@ wchar_t* PathToCatalog(const wchar_t* url)
 
 	return ret;
 }
-wchar_t* FoundFileUrl(const wchar_t* path, const wchar_t* name)
+wchar_t* FoundFileUrl(const wchar_t* path, const wchar_t* name) noexcept
 {
 	int path_length = lstrlenW(path);
 	int name_length = lstrlenW(name);
@@ -25,6 +25,15 @@ wchar_t* FoundFileUrl(const wchar_t* path, const wchar_t* name)
 	memcpy(ret + (path_length-1), name, name_length*sizeof(wchar_t));
 	ret[path_length+name_length-1] = 0;
 	return ret;
+}
+wchar_t* GetNameFromUrl(const wchar_t* path) noexcept
+{
+	wchar_t* ret = const_cast<wchar_t*>(path);
+
+	for (; *ret != 0; ret++);
+	for (; *ret != L'\\'; ret--);
+
+	return ret+1;
 }
 
 void LOADER::LoadAllFiles(const wchar_t* url) noexcept
@@ -44,6 +53,7 @@ void LOADER::LoadAllFiles(const wchar_t* url) noexcept
 
 			LOADER_FILE* new_file = new LOADER_FILE;
 			new_file->url = FoundFileUrl(path, data.cFileName);
+			new_file->name = GetNameFromUrl(new_file->url);
 			tab.push_back(new_file);
 		}
 
@@ -62,6 +72,6 @@ void LOADER::LoadAllFiles(const wchar_t* url) noexcept
 
 		tab.clear();
 	}
-
+	
 	delete[] path;
 }

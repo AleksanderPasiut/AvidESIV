@@ -3,6 +3,7 @@
 class LOADER_FILE
 {
 	const wchar_t* url;
+	wchar_t* name;
 	bool opened;
 	float zoom;
 	float shift_x;
