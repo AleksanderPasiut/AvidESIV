@@ -49,6 +49,10 @@ void MENU::InitBrushes()
 
 				BUTTON::font->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
 				BUTTON::font->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
+				BUTTON::font->SetWordWrapping(DWRITE_WORD_WRAPPING_NO_WRAP);
+				
+				DWRITE_TRIMMING trimming = { DWRITE_TRIMMING_GRANULARITY_CHARACTER, 0, 0 };
+				BUTTON::font->SetTrimming(&trimming, 0);
 			}
 			catch(...) { BUTTON::brush_shader_2->Release(); throw; }
 		}

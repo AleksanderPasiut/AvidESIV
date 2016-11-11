@@ -124,10 +124,3 @@ void PICTURE::Next() noexcept
 	if (!loader->LoadNext(&pp))
 		pp.ResetPosition(loader->rect);
 }
-void PICTURE::ShowInfo() const noexcept
-{
-	return; // functionality is cancelled for now
-	/*SHOW_INFO_DATA sid;
-	loader->FillShowInfoData(&sid);
-	DialogBoxParam(0, "dialog_show_info", graphics->Target()->GetHwnd(), reinterpret_cast<DLGPROC>(DialogShowWindowProc), reinterpret_cast<LPARAM>(&sid));*/
-}

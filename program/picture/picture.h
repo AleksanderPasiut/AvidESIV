@@ -24,7 +24,6 @@ class PICTURE
 	bool External(WPARAM wParam) noexcept;
 	void Previous() noexcept;
 	void Next() noexcept;
-	void ShowInfo() const noexcept;
 
 	unsigned RetInterpolationMode() const noexcept { return pp.interpolation_mode; }
 	unsigned RetMarkerType() const noexcept { return pp.rotation_marker_type; }

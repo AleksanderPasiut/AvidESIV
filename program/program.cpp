@@ -59,7 +59,6 @@ LRESULT PROGRAM::Message(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) noe
 				case BT_SETTINGS: settings->Proceed(); break;
 				case BT_PREVIOUS: picture->Previous(); break;
 				case BT_NEXT: picture->Next(); break;
-				case BT_INFO: picture->ShowInfo(); break;
 			}
 			break;
 		}
