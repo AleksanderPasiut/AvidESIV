@@ -33,12 +33,12 @@ void SETTINGS::InitSavingPath()
 	wchar_t** argv = CommandLineToArgvW(tmp, &argc);
 
 	unsigned size = lstrlenW(argv[0]);
-	path = new wchar_t [size+10];
-	memcpy(path, argv[0], size);
+	path = new wchar_t [size+12];
+	memcpy(path, argv[0], size*sizeof(wchar_t));
 	for (unsigned i = size; i > 0; i--)
 		if (path[i] == L'\\')
 		{
-			memcpy(path+i, L"config.cfg", 11*sizeof(wchar_t));
+			memcpy(path+i+1, L"config.cfg", 11*sizeof(wchar_t));
 			break;
 		}
 }
