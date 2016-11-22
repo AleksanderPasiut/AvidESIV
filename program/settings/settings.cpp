@@ -10,11 +10,11 @@ SETTINGS::SETTINGS(HWND hwnd_parent, MENU* menu, PICTURE* picture) :
 	menu(menu),
 	picture(picture)
 {
-	InitSavingPath();
-
 	if (own)
 		throw 0;
 	else own = this;
+
+	InitSavingPath();
 
 	if (LoadSet())
 		ApplySet();
