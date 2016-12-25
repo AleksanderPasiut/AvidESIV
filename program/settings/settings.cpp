@@ -54,7 +54,7 @@ bool SETTINGS::LoadSet() noexcept
 {
 	using namespace std;
 
-	fstream FS(path, fstream::in);
+	fstream FS(path, fstream::in | fstream::binary);
 
 	if (!FS)
 		return false;
@@ -86,7 +86,7 @@ void SETTINGS::SaveSet() const noexcept
 {
 	using namespace std;
 
-	fstream FS(path, fstream::out);
+	fstream FS(path, fstream::out | fstream::binary);
 
 	if (!FS)
 		return;
